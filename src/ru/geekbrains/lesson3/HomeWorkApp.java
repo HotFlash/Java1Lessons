@@ -21,7 +21,7 @@ public class HomeWorkApp {
     }
 
     public static boolean isTwoPartArraySame(int[] array, int separator) { //проверка двух частей массива на равество
-        boolean isSame = false;
+        boolean isSame;
         int partLeftSum = 0;
         int partRightSum = 0;
         for (int i = 0; i < array.length; i++) {
