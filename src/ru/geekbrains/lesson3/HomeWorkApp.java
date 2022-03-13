@@ -16,25 +16,27 @@ public class HomeWorkApp {
         int[] builderArray = buildArray(10, 200); // заполнение указанной длины массива указанным значением
         System.out.println(Arrays.toString(builderArray)); // проверка заполнения
         minMaxParser(arrayMultiple);
-        int[] isTwoPartSame = {10, 5, 4, 3, 3, 1, 20, 4}; //массив для сравнения частей
-        System.out.println(isTwoPartArraySame(isTwoPartSame, 5)); //проверка частей массива с левой частью в 5 ячеек
+        int[] isTwoPartSame = {2, 4, 1, 1, 1, 1, 2, 2}; //массив для сравнения частей
+        System.out.println(isTwoPartArraySame(isTwoPartSame)); //проверка частей массива с левой частью в 5 ячеек
     }
 
-    public static boolean isTwoPartArraySame(int[] array, int separator) { //проверка двух частей массива на равество
-        boolean isSame;
-        int partLeftSum = 0;
+    public static boolean isTwoPartArraySame(int[] array) { //проверка двух частей массива на равество
+        boolean isSame = false;
         int partRightSum = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (i < separator) {
-                partLeftSum += array[i];
-            } else {
+        for (int k = 0; k < array.length; k++) {
+            for (int i = 0; i < array.length; i++) {
                 partRightSum += array[i];
+                int partLeftSum = 0;
+                for (int j = i + 1; j < array.length; j++) {
+                    partLeftSum += array[j];
+                }
+                if (partLeftSum == partRightSum) {
+                    isSame = true;
+                    return isSame;
+                } else {
+                    isSame = false;
+                }
             }
-        }
-        if (partLeftSum == partRightSum) {
-            isSame = true;
-        } else {
-            isSame = false;
         }
         return isSame;
     }
